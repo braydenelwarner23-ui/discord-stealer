@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "routes": [
+    { "src": "/steal", "dest": "/api/steal.js" }
+  ]
+}

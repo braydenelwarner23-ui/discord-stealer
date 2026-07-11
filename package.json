@@ -1,0 +1,10 @@
+{
+  "name": "discord-stealer",
+  "version": "1.0",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.3"
+  }
+}
