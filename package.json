@@ -7,4 +7,7 @@
   "dependencies": {
     "qrcode": "^1.5.3"
   }
-}
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
